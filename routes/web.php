@@ -8,3 +8,6 @@ Route::get('/', function () {
 });
 
 Route::get('/ask', [GoverknowerController::class, 'ask']);
+Route::options('/ask', function () {
+    return response('', 200);
+});
