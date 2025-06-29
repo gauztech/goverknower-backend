@@ -19,9 +19,11 @@ class GoverknowerController extends Controller
     public function ask(Request $request)
     {
 
-        $request->validate([
-            'query' => 'required|string|max:1000',
-        ]);
+        if (!$request->has('query')) {
+            return response()->json([
+                'error' => 'No query provided'
+            ], 400);
+        }
 
         $userQuery = $request->input('query');
 
